@@ -19,7 +19,7 @@ data class NewProposalRequest(
 
     @field:ValidDocument
     @field:Size(max = 14, message = "Must be no longer than 14 characters")
-    @field:Pattern(regexp = "[^0-9]", message = "Document must have only numbers")
+    @field:Pattern(regexp = "[0-9]+", message = "Document must have only numbers")
     @CheckIfAlreadyExists(domainClass = "Proposal", fieldName = "document")
     val document: String,
 
@@ -44,3 +44,8 @@ data class NewProposalRequest(
     }
 
 }
+
+/*
+    Regex para permitir somente números: "[0-9]+"
+    Regex para remover caracteres especiais de CPF/CNPJ: "[^0-9]"
+ */
