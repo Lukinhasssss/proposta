@@ -1,6 +1,10 @@
+server:
+  servlet:
+    context-path: /v1
+
 spring:
   profiles:
-    active: ${APP_PROFILE}
+    active: ${APP_PROFILE:default}
   datasource:
     url: ${DB_URL:jdbc:postgresql://localhost:5432/proposta}
     username: ${DB_USERNAME:postgres}
