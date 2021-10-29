@@ -16,7 +16,7 @@ import kotlin.reflect.KClass
 @CPF @CNPJ
 @Constraint(validatedBy = [])
 annotation class ValidDocument(
-    val message: String = "Must a valid CPF/CNPJ",
+    val message: String = "Must be a valid CPF/CNPJ",
     val groups: Array<KClass<Any>> = [],
     val payload: Array<KClass<Payload>> = []
 )
