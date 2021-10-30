@@ -8,11 +8,12 @@ import javax.validation.constraints.*
 
 data class NewProposalRequest(
 
-    @field:NotEmpty(message = "Required field")
+    @field:NotBlank(message = "Required field")
     @field:Size(max = 50, message = "Must be no longer than 50 characters")
     val name: String,
 
-    @field:NotEmpty(message = "Required field")
+    @field:NotBlank(message = "Required field")
+    @field:Email(message = "Must be a valid email")
     @field:Size(max = 50, message = "Must be no longer than 50 characters")
     @CheckIfAlreadyExists(domainClass = "Proposal", fieldName = "email")
     val email: String,
@@ -27,7 +28,7 @@ data class NewProposalRequest(
     @field:Positive(message = "Salary cannot be negative")
     val salary: BigDecimal,
 
-    @field:NotEmpty(message = "Required field")
+    @field:NotBlank(message = "Required field")
     @field:Size(max = 150, message = "Must be no longer than 150 characters")
     val address: String
 
