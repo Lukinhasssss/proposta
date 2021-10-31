@@ -6,6 +6,8 @@ import io.restassured.module.kotlin.extensions.Given
 import io.restassured.module.kotlin.extensions.Then
 import io.restassured.module.kotlin.extensions.When
 import org.hamcrest.Matchers.matchesPattern
+import org.hamcrest.Matchers.notNullValue
+import org.hamcrest.core.IsEqual
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -50,6 +52,29 @@ class NewProposalControllerTest {
         // Arrange
         val request = newProposalRequest.copy(name = "")
     
+        // Act - Assert
+        Given {
+            port(port)
+            contentType("application/json")
+            body(request)
+        } When {
+            post("/v1/proposals")
+        } Then {
+            statusCode(400)
+            body("timestamp", notNullValue())
+            body("status", IsEqual(400))
+            body("path", IsEqual("/proposals"))
+            body("messages.size()", IsEqual(1))
+            body("messages.get(0).field", IsEqual("name"))
+            body("messages.get(0).message", IsEqual("Required field"))
+        }
+    }
+
+    @Test
+    internal fun `should return 400 with an error message when name has more than 50 characteres`() {
+        // Arrange
+        val request = newProposalRequest.copy(name = "a".repeat(51))
+
         // Act - Assert
         Given {
             port(port)
@@ -111,6 +136,23 @@ class NewProposalControllerTest {
             post("/v1/proposals")
         } Then {
             statusCode(422)
+        }
+    }
+
+    @Test
+    internal fun `should return 400 with an error message when email has more than 50 characteres`() {
+        // Arrange
+        val request = newProposalRequest.copy(name = "a".repeat(51).plus("@gmail.com"))
+
+        // Act - Assert
+        Given {
+            port(port)
+            contentType("application/json")
+            body(request)
+        } When {
+            post("/v1/proposals")
+        } Then {
+            statusCode(400)
         }
     }
 
@@ -205,6 +247,23 @@ class NewProposalControllerTest {
     internal fun `should return 400 with an error message when address is not provided`() {
         // Arrange
         val request = newProposalRequest.copy(address = "")
+
+        // Act - Assert
+        Given {
+            port(port)
+            contentType("application/json")
+            body(request)
+        } When {
+            post("/v1/proposals")
+        } Then {
+            statusCode(400)
+        }
+    }
+
+    @Test
+    internal fun `should return 400 with an error message when address has more than 150 characteres`() {
+        // Arrange
+        val request = newProposalRequest.copy(name = "a".repeat(151))
 
         // Act - Assert
         Given {

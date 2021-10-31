@@ -55,6 +55,6 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
-tasks.test {
-	useJUnitPlatform()
-}
+//tasks.test {
+//	useJUnitPlatform()
+//}
