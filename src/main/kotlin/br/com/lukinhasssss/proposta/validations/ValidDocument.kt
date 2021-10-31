@@ -13,7 +13,8 @@ import kotlin.reflect.KClass
 @Target(FIELD)
 @Retention(RUNTIME)
 @ConstraintComposition(CompositionType.OR)
-@CPF @CNPJ
+@CPF(message = "Must be a valid CPF/CNPJ")
+@CNPJ(message = "Must be a valid CPF/CNPJ")
 @Constraint(validatedBy = [])
 annotation class ValidDocument(
     val message: String = "Must be a valid CPF/CNPJ",

@@ -15,7 +15,7 @@ class ControllerExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException::class)
     fun handleMethodArgumentNotValidException(exception: MethodArgumentNotValidException, request: HttpServletRequest): ResponseEntity<StandardErrorMessage> {
-        val errorMessages = exception.bindingResult.fieldErrors.map { FieldError(it.field, it.defaultMessage.toString()) }
+        val errorMessages = exception.bindingResult.fieldErrors.map { FieldError(it.field, it.defaultMessage.toString()) }.toSet()
         val errorResponse = StandardErrorMessage(status = HttpStatus.BAD_REQUEST.value(), path = request.servletPath, messages = errorMessages)
 
         logger.error("Error to make request on path ${request.servletPath}, errors: $errorResponse")

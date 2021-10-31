@@ -19,13 +19,12 @@ data class NewProposalRequest(
     val email: String,
 
     @field:ValidDocument
-    @field:Size(max = 14, message = "Must be no longer than 14 characters")
     @field:Pattern(regexp = "[0-9]+", message = "Document must have only numbers")
     @CheckIfAlreadyExists(domainClass = "Proposal", fieldName = "document")
     val document: String,
 
     @field:NotNull(message = "Required field")
-    @field:Positive(message = "Salary cannot be negative")
+    @field:Positive(message = "Salary cannot be zero or negative")
     val salary: BigDecimal,
 
     @field:NotBlank(message = "Required field")
