@@ -150,31 +150,6 @@ class NewProposalControllerTest {
     }
 
     @Test
-    internal fun `should return 422 with an error message when already exists a proposal with provided email`() {
-        // Arrange
-        repository.save(newProposalRequest.toModel())
-        val request = newProposalRequest.copy(document = "51582582017")
-
-        // Act - Assert
-        Given {
-            port(port)
-            contentType("application/json")
-            body(request)
-        } When {
-            post("/v1/proposals")
-        } Then {
-            statusCode(422)
-            body("timestamp", notNullValue())
-            body("status", IsEqual(422))
-            body("path", IsEqual("/proposals"))
-            body("message", hasEntry("field", "email"))
-            body("message", hasEntry("message", "There is already a proposal with this email"))
-        }
-
-        assertTrue(repository.findAll().size == 1)
-    }
-
-    @Test
     internal fun `should return 400 with an error message when email has more than 50 characteres`() {
         // Arrange
         val request = newProposalRequest.copy(email = "a".repeat(51).plus("@gmail.com"))

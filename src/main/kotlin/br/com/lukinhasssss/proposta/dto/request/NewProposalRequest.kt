@@ -15,7 +15,6 @@ data class NewProposalRequest(
     @field:NotBlank(message = "Required field")
     @field:Email(message = "Must be a valid email")
     @field:Size(max = 50, message = "Must be no longer than 50 characters")
-    @CheckIfAlreadyExists(domainClass = "Proposal", fieldName = "email")
     val email: String,
 
     @field:ValidDocument
