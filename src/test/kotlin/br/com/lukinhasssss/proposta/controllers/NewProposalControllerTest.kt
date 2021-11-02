@@ -1,7 +1,14 @@
 package br.com.lukinhasssss.proposta.controllers
 
+import br.com.lukinhasssss.proposta.builder.saveProposalBuilder
+import br.com.lukinhasssss.proposta.clients.analyze.ProposalAnalyzeClient
+import br.com.lukinhasssss.proposta.clients.analyze.ProposalAnalyzeRequest
 import br.com.lukinhasssss.proposta.dto.request.NewProposalRequest
+import br.com.lukinhasssss.proposta.models.Proposal
+import br.com.lukinhasssss.proposta.models.enums.ProposalStatus
 import br.com.lukinhasssss.proposta.repositories.ProposalRepository
+import io.mockk.every
+import io.mockk.mockk
 import io.restassured.module.kotlin.extensions.Given
 import io.restassured.module.kotlin.extensions.Then
 import io.restassured.module.kotlin.extensions.When
@@ -252,7 +259,7 @@ class NewProposalControllerTest {
     @Test
     internal fun `should return 422 with an error message when already exists a proposal with provided document`() {
         // Arrange
-        repository.save(newProposalRequest.toModel())
+        repository.save(saveProposalBuilder())
         val request = newProposalRequest.copy(email = "luffy@gmail.com")
 
         // Act - Assert

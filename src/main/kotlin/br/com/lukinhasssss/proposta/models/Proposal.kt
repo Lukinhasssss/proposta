@@ -1,19 +1,16 @@
 package br.com.lukinhasssss.proposta.models
 
+import br.com.lukinhasssss.proposta.models.enums.ProposalStatus
 import org.hibernate.annotations.GenericGenerator
 import java.math.BigDecimal
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
 
 @Entity
 @Table(name = "tb_proposal")
 data class Proposal(
 
-    @Id @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    val id: String? = null,
+    @Id
+    val id: String,
 
     val name: String,
 
@@ -23,6 +20,9 @@ data class Proposal(
 
     val salary: BigDecimal,
 
-    val address: String
+    val address: String,
+
+    @Enumerated(value = EnumType.STRING)
+    val proposalStatus: ProposalStatus? = null
 
 )

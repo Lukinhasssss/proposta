@@ -4,6 +4,7 @@ import br.com.lukinhasssss.proposta.models.Proposal
 import br.com.lukinhasssss.proposta.validations.CheckIfAlreadyExists
 import br.com.lukinhasssss.proposta.validations.ValidDocument
 import java.math.BigDecimal
+import java.util.*
 import javax.validation.constraints.*
 
 data class NewProposalRequest(
@@ -34,6 +35,7 @@ data class NewProposalRequest(
 
     fun toModel(): Proposal {
         return Proposal(
+            id = UUID.randomUUID().toString(),
             name = name,
             email = email,
             document = document,

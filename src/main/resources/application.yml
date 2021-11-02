@@ -17,3 +17,7 @@ spring:
       hibernate:
         show_sql: false
         format_sql: false
+
+clients:
+  analyze:
+    url: http://localhost:9999/api/solicitacao
