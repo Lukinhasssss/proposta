@@ -32,4 +32,11 @@ class ControllerExceptionHandler {
         return ResponseEntity.unprocessableEntity().body(errorResponse)
     }
 
+    @ExceptionHandler(value = [IntegrationErrorException::class])
+    fun handleIntegrationErrorException(exception: IntegrationErrorException, request: HttpServletRequest): ResponseEntity<FieldError> {
+        val errorResponse = FieldError(field = "", message = exception.message!!)
+
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(errorResponse)
+    }
+
 }

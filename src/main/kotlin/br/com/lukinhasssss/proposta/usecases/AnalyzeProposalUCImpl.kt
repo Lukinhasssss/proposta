@@ -2,6 +2,7 @@ package br.com.lukinhasssss.proposta.usecases
 
 import br.com.lukinhasssss.proposta.clients.analyze.ProposalAnalyzeClient
 import br.com.lukinhasssss.proposta.clients.analyze.ProposalAnalyzeRequest
+import br.com.lukinhasssss.proposta.exceptions.IntegrationErrorException
 import br.com.lukinhasssss.proposta.models.Proposal
 import br.com.lukinhasssss.proposta.models.enums.ProposalStatus
 import br.com.lukinhasssss.proposta.usecases.port.AnalyzeProposalUC
@@ -32,12 +33,14 @@ class AnalyzeProposalUCImpl(
             return proposal.copy(proposalStatus = ProposalStatus.convert(proposalAnalyzeResponse!!.solicitationResult))
         }
         catch (ex: FeignException) {
-            if (ex.status() == 422)
+            if (ex.status() == 422) {
+                logger.info("Finish request for analyze api")
                 return proposal.copy(proposalStatus = ProposalStatus.convert("COM_RESTRICAO"))
+            }
 
-            throw IntegrationErrorException("")
+            logger.error("Error to send request for anaçyze api, status: {}, body: {}", ex.status(), ex.responseBody())
+            throw IntegrationErrorException("Error to send request for analyze api")
         }
-
     }
 
 }
