@@ -36,6 +36,7 @@ dependencies {
 	testImplementation("io.mockk:mockk:1.12.0")
 	testImplementation("io.rest-assured:kotlin-extensions:4.4.0")
 	testImplementation("org.springframework.boot:spring-boot-starter-test:2.5.5")
+	testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
 }
 
 dependencyManagement {
