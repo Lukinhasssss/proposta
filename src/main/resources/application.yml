@@ -18,6 +18,17 @@ spring:
         show_sql: false
         format_sql: false
 
+# Expondo todos os endpoins disponíveis no actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+info:
+  app:
+    name: proposta
+
 clients:
   analyze:
     url: http://localhost:9999/api/solicitacao
