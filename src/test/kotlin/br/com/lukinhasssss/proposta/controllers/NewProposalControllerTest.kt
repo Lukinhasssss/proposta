@@ -19,7 +19,7 @@ import java.math.BigDecimal
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ActiveProfiles("test")
-class NewProposalControllerTest {
+internal class NewProposalControllerTest {
 
     @LocalServerPort
     private var port = 0
@@ -28,10 +28,10 @@ class NewProposalControllerTest {
     lateinit var repository: ProposalRepository
 
     @BeforeEach
-    internal fun setUp() { repository.deleteAll() }
+    fun setUp() { repository.deleteAll() }
 
     @Test
-    internal fun `should return 201 and save proposal on database when request is valid`() {
+    fun `should return 201 and save proposal on database when request is valid`() {
         // Arrange
         val request = newProposalRequest
 
@@ -51,7 +51,7 @@ class NewProposalControllerTest {
     }
     
     @Test
-    internal fun `should return 400 with an error message when name is not provided`() {
+    fun `should return 400 with an error message when name is not provided`() {
         // Arrange
         val request = newProposalRequest.copy(name = "")
     
@@ -76,7 +76,7 @@ class NewProposalControllerTest {
     }
 
     @Test
-    internal fun `should return 400 with an error message when name has more than 50 characteres`() {
+    fun `should return 400 with an error message when name has more than 50 characteres`() {
         // Arrange
         val request = newProposalRequest.copy(name = "a".repeat(51))
 
@@ -101,7 +101,7 @@ class NewProposalControllerTest {
     }
 
     @Test
-    internal fun `should return 400 with an error message when email is not provided`() {
+    fun `should return 400 with an error message when email is not provided`() {
         // Arrange
         val request = newProposalRequest.copy(email = "")
 
@@ -126,7 +126,7 @@ class NewProposalControllerTest {
     }
 
     @Test
-    internal fun `should return 400 with an error message when email is invalid`() {
+    fun `should return 400 with an error message when email is invalid`() {
         // Arrange
         val request = newProposalRequest.copy(email = "srgarnetn")
 
@@ -151,7 +151,7 @@ class NewProposalControllerTest {
     }
 
     @Test
-    internal fun `should return 400 with an error message when email has more than 50 characteres`() {
+    fun `should return 400 with an error message when email has more than 50 characteres`() {
         // Arrange
         val request = newProposalRequest.copy(email = "a".repeat(51).plus("@gmail.com"))
 
@@ -176,7 +176,7 @@ class NewProposalControllerTest {
     }
 
     @Test
-    internal fun `should return 400 with an error message when document (CPF) is invalid`() {
+    fun `should return 400 with an error message when document (CPF) is invalid`() {
         // Arrange
         val request = newProposalRequest.copy(document = "12345678912")
 
@@ -201,7 +201,7 @@ class NewProposalControllerTest {
     }
 
     @Test
-    internal fun `should return 400 with an error message when document (CNPJ) is invalid`() {
+    fun `should return 400 with an error message when document (CNPJ) is invalid`() {
         // Arrange
         val request = newProposalRequest.copy(document = "12345678000103")
 
@@ -226,7 +226,7 @@ class NewProposalControllerTest {
     }
 
     @Test
-    internal fun `should return 400 with an error message when document is valid but has special characters`() {
+    fun `should return 400 with an error message when document is valid but has special characters`() {
         // Arrange
         val request = newProposalRequest.copy(document = "515.825.820-17")
 
@@ -251,7 +251,7 @@ class NewProposalControllerTest {
     }
 
     @Test
-    internal fun `should return 422 with an error message when already exists a proposal with provided document`() {
+    fun `should return 422 with an error message when already exists a proposal with provided document`() {
         // Arrange
         repository.save(saveProposalBuilder())
         val request = newProposalRequest.copy(email = "luffy@gmail.com")
@@ -277,7 +277,7 @@ class NewProposalControllerTest {
     }
 
     @Test
-    internal fun `should return 400 with an error message when salary is negative or zero`() {
+    fun `should return 400 with an error message when salary is negative or zero`() {
         // Arrange
         val request = newProposalRequest.copy(salary = BigDecimal("-400000.00"))
 
@@ -302,7 +302,7 @@ class NewProposalControllerTest {
     }
 
     @Test
-    internal fun `should return 400 with an error message when address is not provided`() {
+    fun `should return 400 with an error message when address is not provided`() {
         // Arrange
         val request = newProposalRequest.copy(address = "")
 
@@ -327,7 +327,7 @@ class NewProposalControllerTest {
     }
 
     @Test
-    internal fun `should return 400 with an error message when address has more than 150 characteres`() {
+    fun `should return 400 with an error message when address has more than 150 characteres`() {
         // Arrange
         val request = newProposalRequest.copy(address = "a".repeat(151))
 
