@@ -1,4 +1,4 @@
-package br.com.lukinhasssss.proposta.usecases.port
+package br.com.lukinhasssss.proposta.usecases.analyzeProposal.port
 
 import br.com.lukinhasssss.proposta.models.Proposal
 

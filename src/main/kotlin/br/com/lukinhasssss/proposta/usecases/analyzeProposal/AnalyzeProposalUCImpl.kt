@@ -1,11 +1,11 @@
-package br.com.lukinhasssss.proposta.usecases
+package br.com.lukinhasssss.proposta.usecases.analyzeProposal
 
 import br.com.lukinhasssss.proposta.clients.analyze.ProposalAnalyzeClient
 import br.com.lukinhasssss.proposta.clients.analyze.ProposalAnalyzeRequest
 import br.com.lukinhasssss.proposta.exceptions.IntegrationErrorException
 import br.com.lukinhasssss.proposta.models.Proposal
 import br.com.lukinhasssss.proposta.models.enums.ProposalStatus
-import br.com.lukinhasssss.proposta.usecases.port.AnalyzeProposalUC
+import br.com.lukinhasssss.proposta.usecases.analyzeProposal.port.AnalyzeProposalUC
 import feign.FeignException
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
@@ -38,7 +38,7 @@ class AnalyzeProposalUCImpl(
                 return proposal.copy(proposalStatus = ProposalStatus.convert("COM_RESTRICAO"))
             }
 
-            logger.error("Error to send request for anaçyze api, status: {}, body: {}", ex.status(), ex.responseBody())
+            logger.error("Error to send request for analyze api, status: {}, body: {}", ex.status(), ex.responseBody())
             throw IntegrationErrorException("Error to send request for analyze api")
         }
     }

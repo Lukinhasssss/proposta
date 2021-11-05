@@ -2,8 +2,7 @@ package br.com.lukinhasssss.proposta.controllers
 
 import br.com.lukinhasssss.proposta.dto.request.NewProposalRequest
 import br.com.lukinhasssss.proposta.repositories.ProposalRepository
-import br.com.lukinhasssss.proposta.usecases.AnalyzeProposalUCImpl
-import br.com.lukinhasssss.proposta.usecases.port.AnalyzeProposalUC
+import br.com.lukinhasssss.proposta.usecases.analyzeProposal.AnalyzeProposalUCImpl
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
