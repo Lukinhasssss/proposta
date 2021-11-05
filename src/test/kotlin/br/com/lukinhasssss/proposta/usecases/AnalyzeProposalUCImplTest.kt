@@ -1,11 +1,11 @@
 package br.com.lukinhasssss.proposta.usecases
 
 import br.com.lukinhasssss.proposta.clients.analyze.ProposalAnalyzeClient
-import br.com.lukinhasssss.proposta.clients.analyze.ProposalAnalyzeRequest
-import br.com.lukinhasssss.proposta.clients.analyze.ProposalAnalyzeResponse
-import br.com.lukinhasssss.proposta.exceptions.ControllerExceptionHandler
+import br.com.lukinhasssss.proposta.clients.analyze.request.ProposalAnalyzeRequest
+import br.com.lukinhasssss.proposta.clients.analyze.response.ProposalAnalyzeResponse
 import br.com.lukinhasssss.proposta.exceptions.IntegrationErrorException
 import br.com.lukinhasssss.proposta.models.Proposal
+import br.com.lukinhasssss.proposta.usecases.analyzeProposal.AnalyzeProposalUCImpl
 import feign.FeignException
 import feign.Request
 import feign.RequestTemplate

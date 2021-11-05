@@ -1,4 +1,4 @@
-package br.com.lukinhasssss.proposta.clients.analyze
+package br.com.lukinhasssss.proposta.clients.analyze.response
 
 import com.fasterxml.jackson.annotation.JsonProperty
 

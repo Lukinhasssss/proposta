@@ -270,7 +270,7 @@ internal class NewProposalControllerTest {
             body("status", IsEqual(422))
             body("path", IsEqual("/proposals"))
             body("message", hasEntry("field", "document"))
-            body("message", hasEntry("message", "There is already a proposal with this document"))
+            body("message", hasEntry("message", "There is already a account with this document"))
         }
 
         assertTrue(repository.findAll().size == 1)

@@ -1,7 +1,7 @@
 package br.com.lukinhasssss.proposta.usecases.analyzeProposal
 
 import br.com.lukinhasssss.proposta.clients.analyze.ProposalAnalyzeClient
-import br.com.lukinhasssss.proposta.clients.analyze.ProposalAnalyzeRequest
+import br.com.lukinhasssss.proposta.clients.analyze.request.ProposalAnalyzeRequest
 import br.com.lukinhasssss.proposta.exceptions.IntegrationErrorException
 import br.com.lukinhasssss.proposta.models.Proposal
 import br.com.lukinhasssss.proposta.models.enums.ProposalStatus

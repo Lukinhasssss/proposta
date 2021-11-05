@@ -22,6 +22,8 @@ data class Proposal(
 
     val address: String,
 
+    val cardNumber: String? = null,
+
     @Enumerated(value = EnumType.STRING)
     val proposalStatus: ProposalStatus? = null
 

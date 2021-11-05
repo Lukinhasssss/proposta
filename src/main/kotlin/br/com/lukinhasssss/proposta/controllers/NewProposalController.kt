@@ -25,7 +25,7 @@ class NewProposalController(
     @PostMapping
     @Transactional
     fun create(@Valid @RequestBody request: NewProposalRequest): ResponseEntity<Unit> {
-        logger.info("Receiving new proposal of document={} and salary={}", request.document, request.salary)
+        logger.info("Receiving new account of document={} and salary={}", request.document, request.salary)
 
         val proposal = analyzeProposalService.analyzeProposal(request.toModel())
         proposalRepository.save(proposal)
