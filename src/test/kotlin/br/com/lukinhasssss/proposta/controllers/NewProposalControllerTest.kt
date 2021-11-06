@@ -263,14 +263,13 @@ internal class NewProposalControllerTest {
             body(request)
         } When {
             post("/v1/proposals")
-            post("/v1/proposals")
         } Then {
             statusCode(422)
             body("timestamp", notNullValue())
             body("status", IsEqual(422))
             body("path", IsEqual("/proposals"))
             body("message", hasEntry("field", "document"))
-            body("message", hasEntry("message", "There is already a account with this document"))
+            body("message", hasEntry("message", "There is already a proposal with this document"))
         }
 
         assertTrue(repository.findAll().size == 1)

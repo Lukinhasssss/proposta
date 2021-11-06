@@ -1,14 +1,14 @@
 package br.com.lukinhasssss.proposta.models.enums
 
 enum class ProposalStatus {
-    NAO_ELEGIVEL, ELEGIVEL;
+    NOT_ELIGIBLE, ELIGIBLE;
 
     companion object {
         fun convert(solicitationResult: String): ProposalStatus? {
             val mapper: HashMap<String, ProposalStatus> = hashMapOf()
 
-            mapper["COM_RESTRICAO"] = NAO_ELEGIVEL
-            mapper["SEM_RESTRICAO"] = ELEGIVEL
+            mapper["COM_RESTRICAO"] = NOT_ELIGIBLE
+            mapper["SEM_RESTRICAO"] = ELIGIBLE
 
             return mapper[solicitationResult]
         }

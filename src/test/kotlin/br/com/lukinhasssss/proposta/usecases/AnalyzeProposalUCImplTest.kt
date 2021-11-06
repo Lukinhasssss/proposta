@@ -45,7 +45,7 @@ internal class AnalyzeProposalUCImplTest {
 
         // Assert
         with(response) {
-            assertEquals("ELEGIVEL", proposalStatus?.name)
+            assertEquals("ELIGIBLE", proposalStatus?.name)
         }
     }
 
@@ -72,7 +72,7 @@ internal class AnalyzeProposalUCImplTest {
 
         // Assert
         with(response) {
-            assertEquals("NAO_ELEGIVEL", proposalStatus?.name)
+            assertEquals("NOT_ELIGIBLE", proposalStatus?.name)
         }
     }
 

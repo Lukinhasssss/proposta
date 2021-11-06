@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository
 
 interface ProposalRepository : JpaRepository<Proposal, String> {
 
-    fun findByProposalStatusAndCardNumberIsNull(proposalStatusElegivel: ProposalStatus): Set<Proposal>
+    fun findByProposalStatusAndCardNumberIsNull(proposalStatus: ProposalStatus): Set<Proposal>
 
 }

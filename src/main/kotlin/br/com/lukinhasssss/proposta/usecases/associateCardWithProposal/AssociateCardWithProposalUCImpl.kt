@@ -26,7 +26,7 @@ class AssociateCardWithProposalUCImpl(
         val accounts = accountClient.getAllAccounts().body
 
         logger.info("Searching for proposals without associated card")
-        val proposals = proposalRepository.findByProposalStatusAndCardNumberIsNull(ProposalStatus.ELEGIVEL)
+        val proposals = proposalRepository.findByProposalStatusAndCardNumberIsNull(ProposalStatus.ELIGIBLE)
         logger.info("${proposals.size} proposals found")
 
         if (proposals.isNotEmpty()) {
