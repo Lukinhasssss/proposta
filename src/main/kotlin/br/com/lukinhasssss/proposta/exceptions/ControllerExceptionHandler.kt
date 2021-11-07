@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
+import org.springframework.web.server.ResponseStatusException
 import javax.servlet.http.HttpServletRequest
 
 @RestControllerAdvice
@@ -37,6 +38,15 @@ class ControllerExceptionHandler {
         val errorResponse = FieldError(field = "", message = exception.message!!)
 
         return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(errorResponse)
+    }
+
+    @ExceptionHandler(value = [NotFoundException::class])
+    fun handleNotFoundException(exception: NotFoundException, request: HttpServletRequest): ResponseEntity<FieldError> {
+        val message = FieldError(field = "", message = exception.localizedMessage)
+
+        logger.info("${exception.localizedMessage}, url: ${request.requestURL}")
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message)
     }
 
 }

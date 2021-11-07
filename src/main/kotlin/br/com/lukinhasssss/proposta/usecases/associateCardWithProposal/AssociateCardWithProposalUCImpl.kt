@@ -22,7 +22,7 @@ class AssociateCardWithProposalUCImpl(
 
     private val logger = LoggerFactory.getLogger(AssociateCardWithProposalUCImpl::class.java)
 
-    @Scheduled(fixedDelay = 30000)
+    @Scheduled(fixedDelay = 180000)
     override fun associate() {
         try {
             logger.info("Starting card association with proposal")
