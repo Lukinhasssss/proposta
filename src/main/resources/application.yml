@@ -3,12 +3,10 @@ server:
     context-path: /v1
 
 spring:
-  profiles:
-    active: ${APP_PROFILE:default}
   datasource:
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/proposta}
-    username: ${DB_USERNAME:postgres}
-    password: ${DB_PASSWORD:password}
+    url: jdbc:postgresql://localhost:5432/proposta
+    username: postgres
+    password: password
   jpa:
     open-in-view: false
     hibernate:
