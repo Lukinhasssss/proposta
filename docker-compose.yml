@@ -1,6 +1,26 @@
 version: '3.9'
 
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: lukinhasssss/proposta
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on:
+      - proposta-db
+      - analise
+      - contas
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      DB_URL: jdbc:postgresql://proposta-db:5432/proposta
+      DB_USERNAME: postgres
+      DB_PASSWORD: password
+      ANALYZE_API_URL: http://analise:9999/api/solicitacao
+      ACCOUNTS_API_URL: http://contas:8888/api
+
   proposta-db:
     image: postgres:alpine
     container_name: postgres-proposta
