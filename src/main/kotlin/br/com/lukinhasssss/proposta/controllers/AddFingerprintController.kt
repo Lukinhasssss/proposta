@@ -9,7 +9,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 import javax.validation.Valid
 
 @RestController
-@RequestMapping("/{cardId}/fingerprints")
+@RequestMapping("/v1/cards/{cardId}/fingerprints")
 class AddFingerprintController(
     private val addFingerprintUC: AddFingerprintUC
 ) {
@@ -21,7 +21,7 @@ class AddFingerprintController(
         logger.info("Starting association of fingerprint to card $cardId")
 
         val fingerprint = addFingerprintUC.execute(request.toModel(cardId))
-        val uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{cardId}").buildAndExpand(fingerprint.id).toUri()
+        val uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{fingerprint}").buildAndExpand(fingerprint.id).toUri()
 
         logger.info("Ending association of fingerprint to card $cardId")
         return ResponseEntity.created(uri).build()

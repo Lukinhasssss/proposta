@@ -14,7 +14,7 @@ import javax.transaction.Transactional
 import javax.validation.Valid
 
 @RestController
-@RequestMapping("/proposals")
+@RequestMapping("/v1/proposals")
 class NewProposalController(
     private val proposalRepository: ProposalRepository,
     private val analyzeProposalService: AnalyzeProposalUC

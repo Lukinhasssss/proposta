@@ -1,12 +1,22 @@
-server:
-  servlet:
-    context-path: /v1
+#server:
+#  servlet:
+#    context-path: /v1
+
+info:
+  app:
+    name: proposta
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/proposta
-    username: postgres
-    password: password
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/proposta}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:password}
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:18080/auth/realms/proposal}
+          jwk-set-uri: ${KEYCLOAK_JWKS_URI:http://localhost:18080/auth/realms/proposal/protocol/openid-connect/certs}
   jpa:
     open-in-view: false
     hibernate:
@@ -16,19 +26,14 @@ spring:
         show_sql: false
         format_sql: false
 
-# Expondo todos os endpoins disponíveis no actuator
 management:
   endpoints:
     web:
       exposure:
         include: '*'
 
-info:
-  app:
-    name: proposta
-
 clients:
   analyze:
-    url: http://localhost:9999/api/solicitacao
+    url: ${ANALYZE_API_URL:http://localhost:9999/api/solicitacao}
   account:
-    url: http://localhost:8888/api
+    url: ${ACCOUNTS_API_URL:http://localhost:8888/api}

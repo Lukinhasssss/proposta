@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/proposals")
+@RequestMapping("/v1/proposals")
 class TrackProposalStatusController(
     private val trackProposalStatus: TrackProposalStatusUC
 ) {
