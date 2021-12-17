@@ -48,3 +48,13 @@ services:
     environment:
       SERVER_PORT: 8888
       LOG_LEVEL: INFO
+
+  keycloak:
+    image: jboss/keycloak
+    ports:
+      - "18443:8443"
+      - "18080:8080"
+      - "19990:9990"
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
