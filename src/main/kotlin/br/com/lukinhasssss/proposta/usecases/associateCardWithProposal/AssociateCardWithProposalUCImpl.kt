@@ -18,7 +18,7 @@ import org.springframework.scheduling.annotation.Scheduled
 class AssociateCardWithProposalUCImpl(
     private val proposalRepository: ProposalRepository,
     private val accountClient: AccountClient
-): AssociateCardWithProposalUC {
+) : AssociateCardWithProposalUC {
 
     private val logger = LoggerFactory.getLogger(AssociateCardWithProposalUCImpl::class.java)
 
@@ -40,11 +40,9 @@ class AssociateCardWithProposalUCImpl(
                     logger.info("Card successfully associated with proposal {}", proposal.id)
                 }
             }
-        }
-        catch (ex: FeignException) {
+        } catch (ex: FeignException) {
             logger.error("Error to send request for analyze api, url: {}, status: {}, body: {}", ex.request().url(), ex.status(), ex.responseBody())
             throw IntegrationErrorException("Error to send request for analyze api")
         }
     }
-
 }

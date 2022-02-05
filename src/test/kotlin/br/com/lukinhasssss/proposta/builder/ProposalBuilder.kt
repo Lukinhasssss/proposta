@@ -3,7 +3,7 @@ package br.com.lukinhasssss.proposta.builder
 import br.com.lukinhasssss.proposta.models.Proposal
 import br.com.lukinhasssss.proposta.models.enums.ProposalStatus
 import java.math.BigDecimal
-import java.util.*
+import java.util.UUID
 
 fun saveProposalBuilder(): Proposal {
     return Proposal(

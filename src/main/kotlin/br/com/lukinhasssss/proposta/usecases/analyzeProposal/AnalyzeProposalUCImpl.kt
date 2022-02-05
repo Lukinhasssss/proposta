@@ -31,8 +31,7 @@ class AnalyzeProposalUCImpl(
 
             logger.info("Finish request for analyze api")
             return proposal.copy(proposalStatus = ProposalStatus.convert(proposalAnalyzeResponse!!.solicitationResult))
-        }
-        catch (ex: FeignException) {
+        } catch (ex: FeignException) {
             if (ex.status() == 422) {
                 logger.info("Finish request for analyze api")
                 return proposal.copy(proposalStatus = ProposalStatus.convert("COM_RESTRICAO"))
@@ -42,5 +41,4 @@ class AnalyzeProposalUCImpl(
             throw IntegrationErrorException("Error to send request for analyze api")
         }
     }
-
 }

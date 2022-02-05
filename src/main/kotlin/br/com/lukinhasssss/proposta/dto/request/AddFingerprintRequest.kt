@@ -2,7 +2,7 @@ package br.com.lukinhasssss.proposta.dto.request
 
 import br.com.lukinhasssss.proposta.models.Fingerprint
 import br.com.lukinhasssss.proposta.validations.Base64
-import java.util.*
+import java.util.UUID
 import javax.validation.constraints.NotBlank
 
 data class AddFingerprintRequest(
@@ -20,5 +20,4 @@ data class AddFingerprintRequest(
             cardId = cardId
         )
     }
-
 }

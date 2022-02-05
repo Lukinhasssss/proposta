@@ -1,9 +1,12 @@
 package br.com.lukinhasssss.proposta.models
 
 import br.com.lukinhasssss.proposta.models.enums.ProposalStatus
-import org.hibernate.annotations.GenericGenerator
 import java.math.BigDecimal
-import javax.persistence.*
+import javax.persistence.Entity
+import javax.persistence.EnumType
+import javax.persistence.Enumerated
+import javax.persistence.Id
+import javax.persistence.Table
 
 @Entity
 @Table(name = "tb_proposal")

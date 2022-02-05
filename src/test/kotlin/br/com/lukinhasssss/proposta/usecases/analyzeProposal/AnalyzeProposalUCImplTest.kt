@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.springframework.http.ResponseEntity
 import java.math.BigDecimal
-import java.util.*
+import java.util.UUID
 
 internal class AnalyzeProposalUCImplTest {
 
@@ -98,5 +98,4 @@ internal class AnalyzeProposalUCImplTest {
             analizeProposalService.analyzeProposal(proposal)
         }
     }
-
 }

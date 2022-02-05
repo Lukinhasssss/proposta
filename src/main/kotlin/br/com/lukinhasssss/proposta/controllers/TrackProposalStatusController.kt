@@ -19,5 +19,4 @@ class TrackProposalStatusController(
         val proposalStatus = trackProposalStatus.getProposalStatus(proposalId)
         return ResponseEntity.ok(proposalStatus)
     }
-
 }

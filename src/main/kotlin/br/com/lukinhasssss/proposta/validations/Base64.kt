@@ -44,5 +44,4 @@ class Base64Validator : ConstraintValidator<Base64, Any> {
             false
         }
     }
-
 }

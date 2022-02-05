@@ -14,5 +14,4 @@ interface ProposalAnalyzeClient {
     fun analyzeProposal(
         @RequestBody solicitation: ProposalAnalyzeRequest
     ): ResponseEntity<ProposalAnalyzeResponse>
-
 }

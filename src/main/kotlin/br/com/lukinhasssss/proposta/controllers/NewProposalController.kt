@@ -35,5 +35,4 @@ class NewProposalController(
         logger.info("Proposal created with success, id: {}", proposal.id)
         return ResponseEntity.created(uri).build()
     }
-
 }

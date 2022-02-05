@@ -14,5 +14,4 @@ interface AccountClient {
 
     @GetMapping("/cartoes/{cardId}")
     fun findCardById(@PathVariable cardId: String): ResponseEntity<Unit>
-
 }

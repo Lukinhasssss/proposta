@@ -4,8 +4,13 @@ import br.com.lukinhasssss.proposta.models.Proposal
 import br.com.lukinhasssss.proposta.validations.CheckIfAlreadyExists
 import br.com.lukinhasssss.proposta.validations.ValidDocument
 import java.math.BigDecimal
-import java.util.*
-import javax.validation.constraints.*
+import java.util.UUID
+import javax.validation.constraints.Email
+import javax.validation.constraints.NotBlank
+import javax.validation.constraints.NotNull
+import javax.validation.constraints.Pattern
+import javax.validation.constraints.Positive
+import javax.validation.constraints.Size
 
 data class NewProposalRequest(
 
@@ -43,7 +48,6 @@ data class NewProposalRequest(
             address = address
         )
     }
-
 }
 
 /*

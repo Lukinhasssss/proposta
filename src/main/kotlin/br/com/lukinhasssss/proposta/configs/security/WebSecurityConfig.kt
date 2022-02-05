@@ -31,5 +31,4 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
             .and()
             .oauth2ResourceServer().jwt()
     }
-
 }

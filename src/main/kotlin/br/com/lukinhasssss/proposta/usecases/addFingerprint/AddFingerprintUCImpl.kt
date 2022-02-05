@@ -35,5 +35,4 @@ class AddFingerprintUCImpl(
             throw IntegrationErrorException("Error to send request for account api")
         }
     }
-
 }

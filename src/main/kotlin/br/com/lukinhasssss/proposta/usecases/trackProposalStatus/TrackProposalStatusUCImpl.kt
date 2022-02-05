@@ -26,5 +26,4 @@ class TrackProposalStatusUCImpl(
         logger.info("Tracking of proposal {} finished")
         return ProposalStatusResponse(proposalStatus = ProposalStatus.convertToResponse(proposal.get().proposalStatus!!.name))
     }
-
 }

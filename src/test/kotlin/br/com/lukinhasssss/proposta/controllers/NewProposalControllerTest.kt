@@ -6,7 +6,9 @@ import br.com.lukinhasssss.proposta.repositories.ProposalRepository
 import io.restassured.module.kotlin.extensions.Given
 import io.restassured.module.kotlin.extensions.Then
 import io.restassured.module.kotlin.extensions.When
-import org.hamcrest.Matchers.*
+import org.hamcrest.Matchers.hasEntry
+import org.hamcrest.Matchers.matchesPattern
+import org.hamcrest.Matchers.notNullValue
 import org.hamcrest.core.IsEqual
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
@@ -49,12 +51,12 @@ internal class NewProposalControllerTest {
 
         assertTrue(repository.findAll().size == 1)
     }
-    
+
     @Test
     fun `should return 400 with an error message when name is not provided`() {
         // Arrange
         val request = newProposalRequest.copy(name = "")
-    
+
         // Act - Assert
         Given {
             port(port)
@@ -357,5 +359,4 @@ internal class NewProposalControllerTest {
         salary = BigDecimal("400000.00"),
         address = "Dressrosa"
     )
-
 }

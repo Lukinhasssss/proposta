@@ -9,5 +9,5 @@ import org.springframework.cloud.openfeign.EnableFeignClients
 class PropostaApplication
 
 fun main(args: Array<String>) {
-	runApplication<PropostaApplication>(*args)
+    runApplication<PropostaApplication>(*args)
 }
