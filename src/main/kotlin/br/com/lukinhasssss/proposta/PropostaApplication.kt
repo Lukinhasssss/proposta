@@ -8,6 +8,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients
 @SpringBootApplication
 class PropostaApplication
 
-fun main(args: Array<String>) {
-    runApplication<PropostaApplication>(*args)
+fun main() {
+    runApplication<PropostaApplication>()
 }

@@ -41,7 +41,12 @@ class AssociateCardWithProposalUCImpl(
                 }
             }
         } catch (ex: FeignException) {
-            logger.error("Error to send request for analyze api, url: {}, status: {}, body: {}", ex.request().url(), ex.status(), ex.responseBody())
+            logger.error(
+                "Error to send request for analyze api, url: {}, status: {}, body: {}",
+                ex.request().url(),
+                ex.status(),
+                ex.responseBody()
+            )
             throw IntegrationErrorException("Error to send request for analyze api")
         }
     }
